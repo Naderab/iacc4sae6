@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ResidencesComponent } from './Components/residences/residences.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ResidenceDetailsComponent } from './Components/residences/residence-details/residence-details.component';
@@ -30,7 +30,8 @@ import { AddApartmentComponent } from './Components/Apartments/add-apartment/add
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

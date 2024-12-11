@@ -1,1 +1,63 @@
-<p>add-residence works!</p>
+
+<!--<input [formControl]="name">
+<input [formControl]="address">
+<input [formControl]="image">
+<input [formControl]="status">
+
+<input type="submit" value="Submit" (click)="add()">-->
+
+<div class="container">
+    <div class="row">
+        Add new résidence
+    </div>
+    <div class="row">
+        <form [formGroup]="residence">
+            <div class="mb-3">
+                <label>Name : </label>
+                <input class="form-control" formControlName="name">
+            </div>
+            <div class="alert alert-danger" 
+            *ngIf="name!.invalid && (name!.touched || name!.dirty)">
+                <div *ngIf="name!.hasError('required')">Name is required !</div>
+                <div  *ngIf="name!.hasError('minlength')">
+                    Name must have at least 3 characters !</div>
+            </div>
+            <div class="mb-3">
+                <label>Address :</label>
+                <input class="form-control" formControlName="address">
+            </div>
+            <div class="alert alert-danger" *ngIf="address!.invalid && (address!.touched || address!.dirty)">
+                Address is required !
+            </div>
+            <!--<div class="mb-3" formGroupName="address">
+                <div class="mb-3">
+                    <label>Street :</label>
+                    <input class="form-control" formControlName="street">
+                </div>
+                <div class="mb-3">
+                    <label>City :</label>
+                    <input class="form-control" formControlName="city">
+                </div>
+            </div>-->
+            <div class="mb-3">
+                <label>Image :</label>
+                <input class="form-control" formControlName="image">
+            </div>
+            <div class="alert alert-danger" *ngIf="image!.invalid && (image!.touched || image!.dirty)">
+                Image is required !
+            </div>
+            <div class="mb-3">
+                <label>Status</label>
+                <select class="form-select" formControlName="status">
+                    <option>Disponible</option>
+                    <option>En Construction</option>
+                    <option>Vendu</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-outline-primary" (click)="add()"
+                value="Add résidence" [disabled]="residence.invalid">
+            </div>
+        </form>
+    </div>
+</div>
