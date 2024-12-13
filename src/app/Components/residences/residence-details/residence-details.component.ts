@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Residence } from '../../../models/residence';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ResidenceService } from '../../../services/residence.service';
 
 @Component({
   selector: 'app-residence-details',
@@ -8,40 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./residence-details.component.css'],
 })
 export class ResidenceDetailsComponent {
+  //variable locale
   residences: Residence[] = [
-    {
-      id: 1,
-      name: 'El fel',
-      address: 'Borj Cedria',
-      image: '../../assets/images/R1.jpg',
-      status: 'Disponible',
-    },
-    {
-      id: 2,
-      name: 'El yasmine',
-      address: 'Ezzahra',
-      image: '../../assets/images/R2.jpg',
-      status: 'Disponible',
-    },
-    {
-      id: 3,
-      name: 'El Arij',
-      address: 'Rades',
-      image: '../../assets/images/R3.jpg',
-      status: 'Vendu',
-    },
-    {
-      id: 4,
-      name: 'El Anber',
-      address: 'inconnu',
-      image: '../../assets/images/R4.jpg',
-      status: 'En Construction',
-    },
   ];
   id!: number;
   selectedResidence!: Residence;
-  currentIndex:number=0;
-  constructor(private ac: ActivatedRoute,private r:Router) {
+  currentIndex: number = 0;
+  
+  constructor(private ac: ActivatedRoute,private r:Router,private _residenceService:ResidenceService) {
+    this.residences = this._residenceService.residences;
     console.log(this.ac)
     this.id = this.ac.snapshot.params['id'];
     this.selectedResidence =
