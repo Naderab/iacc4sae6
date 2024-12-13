@@ -1,1 +1,83 @@
-<p>add-apartment works!</p>
+<div class="container">
+    <div class="row">
+        <h3>Add new apartment</h3>
+    </div>
+    <div class="row">
+        <form [formGroup]="apartment">
+            <div class="mb-3">
+                <label>Apartment Number :</label>
+                <input class="form-control" formControlName="apartNum">
+                <div class="alert alert-danger" *ngIf="apartment.get('apartNum')!.invalid 
+                && (apartment.get('apartNum')!.touched||apartment.get('apartNum')!.dirty)">
+                    <div *ngIf="apartment.get('apartNum')!.hasError('required')">
+                        Apartment number is required</div>
+                    <div *ngIf="apartment.get('apartNum')!.hasError('pattern')">
+                        Apartment number invalid</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Floor Number :</label>
+                <input class="form-control" formControlName="floorNum">
+                <div class="alert alert-danger" *ngIf="apartment.get('floorNum')!.invalid 
+                            && (apartment.get('floorNum')!.touched||apartment.get('floorNum')!.dirty)">
+                    <div *ngIf="apartment.get('floorNum')!.hasError('required')">
+                        Floor number is required</div>
+                    <div *ngIf="apartment.get('floorNum')!.hasError('pattern')">
+                        Floor number invalid</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Surface :</label>
+                <input class="form-control" formControlName="surface">
+                <div class="alert alert-danger" *ngIf="apartment.get('surface')!.invalid 
+                                        && (apartment.get('surface')!.touched||apartment.get('surface')!.dirty)">
+                    <div *ngIf="apartment.get('surface')!.hasError('required')">
+                        Surface is required</div>
+                    <div *ngIf="apartment.get('surface')!.hasError('pattern')">
+                        Surface invalid</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Surface :</label>
+                <input type="radio" formControlName="terrace" value="oui">Oui
+                <input type="radio" formControlName="terrace" value="non">Non
+                <div class="alert alert-danger"
+                    *ngIf="apartment.get('terrace')!.invalid 
+                                                    && (apartment.get('terrace')!.touched||apartment.get('terrace')!.dirty)">
+                    <div *ngIf="apartment.get('terrace')!.hasError('required')">
+                        Surface is required</div>
+                </div>
+            </div>
+            <div class="mb-3" *ngIf="apartment.get('terrace')!.value == 'oui'">
+                <label>Surface terrace:</label>
+                <input class="form-control" formControlName="surfaceterrace">
+                <div class="alert alert-danger"
+                    *ngIf="apartment.get('surfaceterrace')!.invalid 
+                                                    && (apartment.get('surfaceterrace')!.touched||apartment.get('surfaceterrace')!.dirty)">
+
+                    <div *ngIf="apartment.get('surfaceterrace')!.hasError('pattern')">
+                        Surface terrace invalid</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Category:</label>
+                <select class="form-select" formControlName="category">
+                    <option value="s+1">S+1</option>
+                    <option value="s+2">S+2</option>
+                    <option value="s+3">S+3</option>
+                    <option value="s+4">S+4</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="apartment.get('category')!.invalid 
+                    && (apartment.get('category')!.touched||apartment.get('category')!.dirty)">
+
+                    <div *ngIf="apartment.get('category')!.hasError('required')">
+                        Category is required</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="sumbit" value="Submit" class="btn btn-outline-success" (click)="add()">
+            </div>
+        </form>
+    </div>
+</div>
+

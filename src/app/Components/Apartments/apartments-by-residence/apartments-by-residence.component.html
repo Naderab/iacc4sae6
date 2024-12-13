@@ -1,1 +1,23 @@
-<p>apartments-by-residence works!</p>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Apart Num</th>
+                    <th>Floor Num</th>
+                    <th>Category</th>
+                    <th>Résidence</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of apartments">
+                    <td>{{a.apartNum}}</td>
+                    <td>{{a.floorNum}}</td>
+                    <td>{{a.category}}</td>
+                    <td><button class="btn btn-primary" [routerLink]="['apartment/details/',a.id]">Détails</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
