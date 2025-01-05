@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Residence } from '../../models/residence';
 import { ResidenceService } from '../../services/residence.service';
+import { ResidenceConsumerService } from 'src/app/services/residence-consumer.service';
 @Component({
   selector: 'app-residences',
   templateUrl: './residences.component.html',
@@ -8,8 +9,12 @@ import { ResidenceService } from '../../services/residence.service';
 })
 export class ResidencesComponent {
 
-  constructor(private _residenceService: ResidenceService) { 
-    this.residences = this._residenceService.residences;
+  constructor(private _residenceService: ResidenceService,private _residenceConsumer:ResidenceConsumerService) { 
+    //this.residences = this._residenceService.residences;
+    this._residenceConsumer.fetch().subscribe({
+      next: (response) => this.residences = response as Residence[],
+      error : (e)=>console.log(e)
+    })
   }
   
   title: string = 'Liste des résidences';

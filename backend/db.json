@@ -1,0 +1,12 @@
+{
+  "residence": [
+    {
+      "name": "r11",
+      "address": "Tunis",
+      "image": "assets/images/R1.jpg",
+      "status": "Disponible",
+      "id": 1
+    }
+  ],
+  "apartment": []
+}
